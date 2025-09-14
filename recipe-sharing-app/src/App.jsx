@@ -4,8 +4,9 @@ import SearchBar from "./components/SearchBar";
 import RecipeList from "./components/RecipeList";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeDetails from "./components/RecipeDetails";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
 
-// ✅ Home page wrapper
 function Home() {
   return (
     <div className="app-container">
@@ -13,21 +14,19 @@ function Home() {
       <SearchBar />
       <AddRecipeForm />
       <RecipeList />
+      <FavoritesList />
+      <RecommendationsList />
     </div>
   );
 }
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* Home page */}
-        <Route path="/" element={<Home />} />
-        {/* Recipe details page */}
-        <Route path="/recipes/:id" element={<RecipeDetails />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/recipes/:id" element={<RecipeDetails />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
