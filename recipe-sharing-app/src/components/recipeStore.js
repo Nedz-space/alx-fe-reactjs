@@ -2,10 +2,12 @@ import create from "zustand";
 
 const useRecipeStore = create((set, get) => ({
   recipes: [],
+  favorites: [],
+  recommendations: [],
   searchTerm: "",
   filteredRecipes: [],
 
-  // ✅ Set all recipes (initialization)
+  // Initialize recipes
   setRecipes: (recipes) =>
     set((state) => ({
       recipes,
@@ -60,6 +62,27 @@ const useRecipeStore = create((set, get) => ({
         recipe.title.toLowerCase().includes(term.toLowerCase())
       ),
     })),
+
+  // ✅ Favorites
+  addFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: [...new Set([...state.favorites, recipeId])], // avoid duplicates
+    })),
+
+  removeFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== recipeId),
+    })),
+
+  // ✅ Recommendations (mock example: suggest random favorites)
+  generateRecommendations: () =>
+    set((state) => {
+      const recommended = state.recipes.filter(
+        (recipe) =>
+          state.favorites.includes(recipe.id) && Math.random() > 0.3
+      );
+      return { recommendations: recommended };
+    }),
 }));
 
 export default useRecipeStore;
