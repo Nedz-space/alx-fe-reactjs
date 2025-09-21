@@ -1,17 +1,27 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users/";
+const BASE_URL = "https://api.github.com";
 
 /**
- * Fetch GitHub user data by username
- * @param {string} username - GitHub username to search
+ * Advanced GitHub user search
+ * @param {Object} filters
+ * @param {string} filters.username
+ * @param {string} filters.location
+ * @param {number} filters.minRepos
+ * @param {number} filters.page
  */
-export const fetchUserData = async (username) => {
-  try {
-    const response = await axios.get(`${BASE_URL}${username}`);
-    return response.data;
-  } catch (error) {
-    // Propagate error to be handled by the component
-    throw error;
-  }
+export const fetchAdvancedUsers = async ({ username, location, minRepos, page = 1 }) => {
+  let query = "";
+  if (username) query += `${username} in:login `;
+  if (location) query += `location:${location} `;
+  if (minRepos) query += `repos:>${minRepos}`;
+
+  const response = await axios.get(`${BASE_URL}/search/users`, {
+    params: {
+      q: query.trim(),
+      per_page: 10,
+      page,
+    },
+  });
+  return response.data; // contains { total_count, items[] }
 };
