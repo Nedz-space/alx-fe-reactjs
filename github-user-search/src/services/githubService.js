@@ -2,7 +2,9 @@ import axios from "axios";
 
 const BASE_URL = "https://api.github.com";
 
-// 🔹 Fetch a single user by username (basic search)
+/**
+ * Fetch a single GitHub user by username (basic search).
+ */
 export const fetchUserData = async (username) => {
   try {
     const response = await axios.get(`${BASE_URL}/users/${username}`);
@@ -13,20 +15,27 @@ export const fetchUserData = async (username) => {
   }
 };
 
-// 🔹 Advanced search using GitHub Search API
-// queryParams is an object like { username: "nedz", location: "nigeria", repos: 10 }
-export const searchUsers = async ({ username, location, repos }) => {
+/**
+ * Advanced user search using GitHub Search API
+ * @param {Object} params - Search parameters
+ * @param {string} params.username - GitHub username to search (optional)
+ * @param {string} params.location - User location to filter (optional)
+ * @param {number} params.minRepos - Minimum repositories count (optional)
+ * @returns {Promise<Array>} - List of matching users
+ */
+export const searchUsers = async ({ username = "", location = "", minRepos = "" }) => {
   try {
-    // Build the query string dynamically
-    let query = username ? `${username} in:login` : "";
+    // ✅ Build query string with all filters
+    let query = "";
+    if (username) query += `${username} in:login`;
     if (location) query += ` location:${location}`;
-    if (repos) query += ` repos:>=${repos}`;
+    if (minRepos) query += ` repos:>=${minRepos}`;
 
     const response = await axios.get(
       `${BASE_URL}/search/users?q=${encodeURIComponent(query)}`
     );
 
-    // The search endpoint returns items[] array
+    // GitHub Search API returns results in `items`
     return response.data.items;
   } catch (error) {
     console.error("Error performing advanced search:", error);
