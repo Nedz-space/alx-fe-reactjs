@@ -1,4 +1,4 @@
-import HomePage from "./component/HomePage";
+import HomePage from "./components/HomePage";
 
 function App() {
   return (
