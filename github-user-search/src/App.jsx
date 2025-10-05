@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
 import Search from "./components/Search";
 
 function App() {
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1 style={{ textAlign: "center" }}>GitHub User Search</h1>
+    <div className="min-h-screen bg-gray-50 font-sans">
+      <h1 className="text-3xl font-bold text-center mt-6">GitHub User Search</h1>
       <Search />
     </div>
   );
