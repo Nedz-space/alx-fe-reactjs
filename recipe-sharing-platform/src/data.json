@@ -3,18 +3,41 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "200g spaghetti",
+      "2 large eggs",
+      "100g pancetta or bacon",
+      "50g grated Parmesan cheese",
+      "Salt and black pepper to taste"
+    ],
+    "instructions": [
+      "Boil the spaghetti in salted water until al dente.",
+      "Cook the pancetta in a pan until crispy.",
+      "Whisk eggs and Parmesan together in a bowl.",
+      "Drain the pasta and mix quickly with the egg mixture and pancetta.",
+      "Serve immediately with extra cheese and black pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-    "image": "https://via.placeholder.com/300x200"
-  },
-  {
-    "id": 3,
-    "title": "Avocado Toast",
-    "summary": "Toasted bread topped with smashed avocado, lime juice, and chili flakes — a healthy breakfast favorite.",
-    "image": "https://via.placeholder.com/300x200"
+    "summary": "Chunks of grilled chicken cooked in a creamy tomato-based gravy.",
+    "image": "https://via.placeholder.com/150",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup yogurt",
+      "2 tbsp tikka masala paste",
+      "1 cup tomato puree",
+      "1/2 cup cream",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and tikka masala paste for 2 hours.",
+      "Grill or cook chicken pieces until golden.",
+      "In a pan, cook tomato puree with cream and salt.",
+      "Add the chicken and simmer for 10 minutes.",
+      "Serve hot with rice or naan."
+    ]
   }
 ]
